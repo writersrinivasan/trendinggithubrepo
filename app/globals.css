@@ -1,0 +1,98 @@
+@import "tailwindcss";
+
+:root {
+  color-scheme: dark;
+  --bg: #07070f;
+  --surface: #12121c;
+  --surface-2: #1a1a26;
+  --ink: #f0efec;
+  --ink-2: #c3c2b7;
+  --muted: #898781;
+  --grid: #2c2c2a;
+  --axis: #383835;
+  --ring: rgba(255, 255, 255, 0.09);
+}
+
+@theme inline {
+  --color-bg: var(--bg);
+  --color-surface: var(--surface);
+  --color-surface-2: var(--surface-2);
+  --color-ink: var(--ink);
+  --color-ink-2: var(--ink-2);
+  --color-muted: var(--muted);
+  --color-ring: var(--ring);
+  --font-sans: system-ui, -apple-system, "Segoe UI", sans-serif;
+}
+
+html,
+body {
+  background: var(--bg);
+  color: var(--ink);
+  font-family: var(--font-sans);
+}
+
+body {
+  background-image:
+    radial-gradient(900px 500px at 10% -10%, rgba(57, 135, 229, 0.22), transparent 60%),
+    radial-gradient(700px 500px at 95% 0%, rgba(213, 81, 129, 0.18), transparent 60%),
+    radial-gradient(800px 600px at 50% 110%, rgba(25, 158, 112, 0.12), transparent 60%);
+  background-attachment: fixed;
+  min-height: 100vh;
+}
+
+.card {
+  background: color-mix(in srgb, var(--surface) 88%, transparent);
+  border: 1px solid var(--ring);
+  border-radius: 20px;
+  backdrop-filter: blur(10px);
+}
+
+.gradient-text {
+  background: linear-gradient(90deg, #6aa8ff, #e87ba4 45%, #f0b347 80%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  border-radius: 999px;
+  padding: 2px 9px;
+  font-size: 11px;
+  border: 1px solid var(--ring);
+  background: var(--surface-2);
+  color: var(--ink-2);
+  white-space: nowrap;
+}
+
+.tabular {
+  font-variant-numeric: tabular-nums;
+}
+
+@keyframes pulse-ring {
+  0% { box-shadow: 0 0 0 0 var(--c); }
+  100% { box-shadow: 0 0 0 12px transparent; }
+}
+.agent-running {
+  animation: pulse-ring 1.2s ease-out infinite;
+}
+
+@keyframes shimmer {
+  0% { background-position: -400px 0; }
+  100% { background-position: 400px 0; }
+}
+.skeleton {
+  background: linear-gradient(90deg, var(--surface-2) 0, #24243a 50%, var(--surface-2) 100%);
+  background-size: 800px 100%;
+  animation: shimmer 1.4s linear infinite;
+  border-radius: 14px;
+}
+
+.recharts-wrapper *:focus {
+  outline: none;
+}
+
+::-webkit-scrollbar { width: 8px; height: 8px; }
+::-webkit-scrollbar-thumb { background: #2a2a3a; border-radius: 8px; }
